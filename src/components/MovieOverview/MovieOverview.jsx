@@ -1,6 +1,8 @@
-import css from "./MovieOverview.module.css";
-import { getImageUrl } from "../../data/themoviedb-api/themoviedb.js";
 import { useMemo } from "react";
+
+import css from "./MovieOverview.module.css";
+
+import { getImageUrl } from "../../data/themoviedb-api/themoviedb.js";
 
 export default function MovieOverview({ details }) {
   const {

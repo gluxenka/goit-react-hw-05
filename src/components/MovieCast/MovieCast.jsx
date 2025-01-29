@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { MdPerson } from "react-icons/md";
+
+import css from "./MovieCast.module.css";
+
 import {
   getImageUrl,
   getMovieExtraInfo,
 } from "../../data/themoviedb-api/themoviedb.js";
-
-import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [castList, setCastList] = useState([]);

@@ -1,15 +1,18 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
+
+import { MdArrowBack } from "react-icons/md";
+
 import { getMovieById } from "../../data/themoviedb-api/themoviedb.js";
-import MovieOverview from "../../components/MovieOverview/MovieOverview.jsx";
+
 import Loader from "../../components/Loader/Loader.jsx";
 import MovieAdditionalInfo from "../../components/MovieAdditionalInfo/MovieAdditionalInfo.jsx";
 import MovieCast from "../../components/MovieCast/MovieCast.jsx";
+import MovieOverview from "../../components/MovieOverview/MovieOverview.jsx";
 import MovieReviews from "../../components/MovieReviews/MovieReviews.jsx";
+import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
 
 import css from "./MovieDetailsPage.module.css";
-import { MdArrowBack } from "react-icons/md";
 
 const getInitialMovieDetailsState = () => ({
   movieInfo: null,
