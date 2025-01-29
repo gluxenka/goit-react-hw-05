@@ -1,0 +1,11 @@
+.MovieReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.MovieReviews li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

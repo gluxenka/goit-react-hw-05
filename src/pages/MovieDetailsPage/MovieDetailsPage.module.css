@@ -1,0 +1,22 @@
+.MovieDetailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.MovieDetailsBackLink {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 100px;
+}
+
+.MovieDetailsBackLink:hover {
+  text-decoration: underline;
+}
