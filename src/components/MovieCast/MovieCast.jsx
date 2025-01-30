@@ -8,20 +8,28 @@ import {
   getImageUrl,
   getMovieExtraInfo,
 } from "../../data/themoviedb-api/themoviedb.js";
+import Loader from "../Loader/Loader.jsx";
 
 export default function MovieCast() {
   const [castList, setCastList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { movieId } = useParams();
 
   const fetchMovieCast = async () => {
+    setLoading(true);
     const { cast } = await getMovieExtraInfo(movieId, "credits");
 
     setCastList(cast);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchMovieCast(movieId);
   }, [movieId]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <ul className={css.MovieCast}>

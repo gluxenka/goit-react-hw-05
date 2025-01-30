@@ -1,11 +1,11 @@
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { searchMovies } from "../../data/themoviedb-api/themoviedb.js";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchLinks, setSearchLinks] = useState([]);
-  const location = useLocation();
   const query = searchParams.get("query");
 
   const fetchMoviesList = async (query) => {
@@ -46,15 +46,8 @@ export default function MoviesPage() {
         <input name="query" type="text" />
         <button type="submit">Search</button>
       </form>
-      <ul>
-        {searchLinks.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={location}>
-              {title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <MovieList items={searchLinks} />
     </div>
   );
 }

@@ -4,22 +4,30 @@ import { useParams } from "react-router-dom";
 import css from "./MovieReviews.module.css";
 
 import { getMovieExtraInfo } from "../../data/themoviedb-api/themoviedb.js";
+import Loader from "../Loader/Loader.jsx";
 
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { movieId } = useParams();
 
   const fetchMovieReviews = async () => {
+    setLoading(true);
     const { results } = await getMovieExtraInfo(movieId, "reviews");
-    setReviews(results);
+    setReviews(results ?? []);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchMovieReviews(movieId);
   }, [movieId]);
 
-  if (!reviews) {
-    return <p>We don&#39;t have nay reviews for this movie.</p>;
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!reviews.length) {
+    return <p>We don&#39;t have any reviews for this movie.</p>;
   }
   return (
     <ul className={css.MovieReviews}>
